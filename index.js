@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 app.use(cookieParser());
 
+// Route trang chủ: đọc cookie
 app.get("/", (req, res) => {
   const role = req.cookies.role;
   if (role === "admin") {
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
   }
 });
 
+// Route đăng nhập: gán cookie role=user
 app.get("/login", (req, res) => {
   res.cookie("role", "user");
   res.send("✅ Đăng nhập thành công. Cookie role=user đã được gán.");
